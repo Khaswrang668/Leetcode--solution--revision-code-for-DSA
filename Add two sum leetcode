@@ -1,0 +1,65 @@
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+
+        ListNode* dummy = new ListNode(-1);
+        ListNode* current = dummy;
+        ListNode* temp;
+        int carry =0;
+
+        //edge cases
+        if(l1->val==0 && l1->next==NULL) return l2;
+        if(l2->val==0 && l2->next==NULL) return l1;
+
+        //main loop for addition between two LLs
+        while(l1!=NULL && l2!=NULL){
+            ListNode* Node=l1;
+            int sum=(l1->val+l2->val+carry);
+            Node->val=sum%10;
+            carry=sum/10;
+
+            current->next=Node;
+            current=Node;
+            l1=l1->next;
+            l2=l2->next;
+        }
+
+        //appending remaining nodes from a LL to current node pointer if carry doesnt exist
+        if(carry==0 && (l1==NULL || l2==NULL)){
+            if(l1!=NULL) temp =l1;
+            if(l2!=NULL) temp=l2;
+
+            while(temp!=NULL){
+            current->next=temp;
+            current=temp;
+            temp = temp->next;
+            }
+        }
+        //adjusting the resulting LL if a carry exists.
+        if(carry!=0 && (l1!=NULL || l2!=NULL)){
+     
+        if(l1!=NULL) temp =l1;
+        if(l2!=NULL) temp=l2;
+
+            while(temp!=NULL){
+            ListNode* x= temp;
+            int sum = temp->val+carry;
+            x->val=sum%10;
+            carry=sum/10;
+
+            current->next=x;
+            current=x;
+            temp=temp->next;
+            }
+        }
+        //if carry still exits but both LLs are exausted .append the carry to tail of current
+        if(carry!=0 && temp==NULL){
+            ListNode* y=new ListNode(carry);
+            current->next=y;
+        }
+    
+        ListNode* NewHead = dummy->next;
+        delete(dummy);
+        return NewHead;
+    }
+};
