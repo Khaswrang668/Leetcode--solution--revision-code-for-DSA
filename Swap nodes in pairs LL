@@ -1,0 +1,22 @@
+class Solution {
+public:
+    ListNode* swapPairs(ListNode* head) {
+        ListNode* temp=head;
+
+        //edge case
+        if(head == NULL || head->next == NULL){
+            return head;
+        }
+
+        while(temp != NULL && temp->next != NULL){
+
+        int x = temp->val;
+        temp->val = temp->next->val;
+        temp->next->val = x;
+
+        temp = temp->next->next;
+        
+        }
+        return head;
+    }
+};
