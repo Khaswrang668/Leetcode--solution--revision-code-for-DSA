@@ -1,0 +1,44 @@
+class Solution {
+public:
+//improvements needed.
+//1.incorrect determination of length
+//2.incorrect rotation number.
+
+    ListNode* rotateRight(ListNode* head, int k) {
+        ListNode* temp = head;
+        int n=1;
+
+        if(head==NULL || head->next==NULL){
+            return head;
+        }
+
+        //finding length of LL
+        while(temp->next!=NULL){
+        temp=temp->next;
+        n++;
+        }
+
+        //rotation 
+        ListNode* tail=head;
+        k=k%n;
+        if(k==0) return head;
+        int rotate = n-k;
+        int count=1;
+
+        while(count<rotate){
+            tail=tail->next;
+            count++;
+        }
+
+        ListNode* newHead = tail->next;
+        ListNode* newTail = newHead;
+        tail->next=NULL;
+
+        //newTail
+        while(newTail->next !=NULL){
+            newTail=newTail->next;
+        }
+        newTail->next=head;
+        return newHead;
+    }
+};
