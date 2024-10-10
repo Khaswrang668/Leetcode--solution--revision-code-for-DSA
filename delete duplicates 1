@@ -1,0 +1,23 @@
+class Solution {
+public:
+    ListNode* deleteDuplicates(ListNode* head) {
+        ListNode* temp = head;
+
+        while(temp != NULL && temp->next!=NULL){
+            ListNode* newNode = temp->next;
+
+            //move the newNode till its not equal to temp or NULL while skipping duplicastes of  temp.
+            while(newNode!=NULL && newNode->val == temp->val){
+                ListNode* del = newNode;
+                newNode = newNode->next;
+                delete(del);
+            }
+
+            //connect temp->next to newNode and move temp to newNode
+            temp->next = newNode;
+            temp=newNode;
+        }
+
+        return head;
+    }
+};
