@@ -14,3 +14,6 @@ LINKS TO THE PROBLEMS OF LEETCODE I SOLVED.
 
 5.rotate linked lists
 [link text] https://leetcode.com/problems/rotate-list/?envType=problem-list-v2&envId=linked-list
+
+6.Delete Duplicates
+[link text] https://leetcode.com/problems/remove-duplicates-from-sorted-list/description/?envType=problem-list-v2&envId=linked-list
