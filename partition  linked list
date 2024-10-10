@@ -1,0 +1,47 @@
+class Solution {
+public:
+    ListNode* partition(ListNode* head, int x) {
+        if(head == NULL || head->next==NULL ){
+            return head;
+        }
+        ListNode* temp = head;
+        ListNode* Lesshead = new ListNode(-1);
+        ListNode* Morehead = new ListNode(-1);
+        ListNode* dummy1 = Lesshead;
+        ListNode* dummy2 = Morehead;
+
+        while(temp!=NULL){
+            if(temp->val < x){
+            ListNode* newnode = temp;
+            temp=temp->next;
+            newnode->next=NULL;
+            dummy1->next = newnode;
+            dummy1=newnode;
+            }
+            else{
+            ListNode* newnode = temp;
+            temp=temp->next;
+            newnode->next=NULL;
+            dummy2->next = newnode;
+            dummy2=newnode;
+            }
+        }
+
+        ListNode* del1=Lesshead;
+        Lesshead = Lesshead->next;
+        delete(del1);
+-+
+        ListNode* del2=Morehead;
+        Morehead = Morehead->next;
+        delete(del2);
+
+        if(Morehead && Lesshead==NULL){
+        return Morehead;
+        }
+        if(Lesshead && Morehead==NULL){
+        return Lesshead;
+        }
+        dummy1->next=Morehead; 
+        return Lesshead;
+    }
+};
