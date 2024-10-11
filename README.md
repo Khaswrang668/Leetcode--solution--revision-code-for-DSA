@@ -21,5 +21,8 @@ LINKS TO THE PROBLEMS OF LEETCODE I SOLVED.
 7.Partition linked lists
 [link text] https://leetcode.com/problems/partition-list/?envType=problem-list-v2&envId=linked-list
 
+8.Reorder List
+[link text] https://leetcode.com/problems/reorder-list/?envType=problem-list-v2&envId=linked-list
+
 8.Odd even linked lists
 [link text] https://leetcode.com/problems/odd-even-linked-list/?envType=problem-list-v2&envId=linked-list
