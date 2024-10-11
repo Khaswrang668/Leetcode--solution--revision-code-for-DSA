@@ -1,0 +1,60 @@
+class Solution {
+public:
+    void reorderList(ListNode* head) {
+     ListNode* temp = head;
+     int n = 1;
+     if(head->next!=NULL){
+     //step1.find the length
+     while(temp->next != NULL){
+        temp=temp->next;
+        n++;
+     }
+      int x = n;
+      if(n%2==0) n=n/2;
+      else n=(n+1)/2;
+      ListNode* temp1 = head;
+      int count=1;
+
+      //step2.find the middle point
+      while(count<n){
+        temp1 = temp1->next;
+        count++;
+      }
+      //step3.reversing the broken part
+      ListNode* prev = NULL;
+      ListNode* temp2 = temp1->next;
+      temp1->next=NULL;
+      while(temp2!=NULL){
+        ListNode* Node = temp2->next;
+        temp2->next = prev;
+        prev = temp2;
+        temp2 = Node;
+      }
+      //step4.forming the resultant LL
+      ListNode* dummy = new ListNode(-1);
+      ListNode* current = dummy;
+      ListNode* appendix1;
+      ListNode* appendix2;
+      ListNode* temp3 = head;
+      ListNode* temp4 = prev;
+      n=1;
+
+      while(temp3!=NULL && temp4!=NULL){
+        if(temp3->next == NULL) appendix1 = temp3;
+        if(temp4->next == NULL) appendix2 = temp4;
+        if(n%2!=0){
+        current->next=temp3;
+        temp3=temp3->next;
+        }
+        else{
+        current->next = temp4;
+        temp4 = temp4->next;
+        }
+        current = current->next;
+        n++;
+      }
+      if(x%2!=0) appendix2->next = temp3;
+      else appendix1->next = temp4;
+    }
+    }
+};
