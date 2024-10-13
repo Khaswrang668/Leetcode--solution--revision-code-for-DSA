@@ -1,0 +1,64 @@
+class Solution {
+public:
+    ListNode* deleteDuplicates(ListNode* head) {
+         
+        if (head == NULL || head->next == NULL) {
+            return head;
+        }
+
+        int val = head->val;
+        int flag = 0;
+
+        // Handle initial duplicates (if any) at the head
+        if (head->next->val == head->val) {
+            while (head->next != NULL && head->val == head->next->val) {
+                head = head->next;
+                flag++;
+            }
+        }
+
+        if (head->val == val && head->next == NULL) {
+            return NULL;
+        }
+        
+        ListNode* tail = head;
+        ListNode* newtail = head;
+        ListNode* dummy = new ListNode(101);
+        ListNode* temp = head;
+  
+        while (tail->next != NULL) {
+            tail = tail->next;
+        }
+        tail->next = dummy;
+
+        // Traverse and delete duplicates in the list
+        while (temp->next->next != NULL) {
+            ListNode* temp2 = temp->next;
+            int x = temp2->val;
+
+            if (temp2->next->val == temp2->val) {
+                // Skip all nodes with the same value
+                while (temp2 != NULL && temp2->val == x) {
+                    ListNode* del = temp2;
+                    temp2 = temp2->next;
+                    delete del;
+                }
+                temp->next = temp2;
+            } else {
+                temp = temp->next;
+            }
+        }
+        
+        // Print remaining nodes and adjust the tail
+        while (newtail->next->next != NULL) {
+            cout << newtail->val << endl;
+            newtail = newtail->next;
+        }
+
+        newtail->next = NULL;
+        delete dummy;
+
+        if (flag) head = head->next;
+        return head;
+    }
+};
