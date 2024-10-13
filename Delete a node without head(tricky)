@@ -1,0 +1,24 @@
+class Solution {
+public:
+    void deleteNode(ListNode* node) {
+    ListNode* current = node->next;
+    node->val = current->val;
+    ListNode* del = current;
+    node->next=current->next;
+    delete(del);
+    }
+};
+//Explanation of the Approach
+/*1.copy the value of node next to given node i.e node->val = node->next->val
+2.then skip over the next node and connect given node to node->next->next or current->next.
+
+examples:-
+1->3->4->5 node=3
+
+1->3->3->5  (copy 4th node value to 3rd node)
+
+1->(3)->3->(5) (connect 2nd node with 4th node while skipping 3rd node)
+
+1->3->5
+*/
+
