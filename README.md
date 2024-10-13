@@ -27,5 +27,5 @@ LINKS TO THE PROBLEMS OF LEETCODE I SOLVED.
 8.Odd even linked lists
 [link text] https://leetcode.com/problems/odd-even-linked-list/?envType=problem-list-v2&envId=linked-list
 
-9.Remove duplicates
+9.Remove duplicates-II
 [link text] https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/submissions/1420954109/?envType=problem-list-v2&envId=linked-list&difficulty=MEDIUM
