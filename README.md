@@ -29,3 +29,6 @@ LINKS TO THE PROBLEMS OF LEETCODE I SOLVED.
 
 9.Remove duplicates-II
 [link text] https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/submissions/1420954109/?envType=problem-list-v2&envId=linked-list&difficulty=MEDIUM
+
+10.delete a node without using head 
+[link text] https://leetcode.com/problems/delete-node-in-a-linked-list/?envType=problem-list-v2&envId=linked-list&difficulty=MEDIUM
